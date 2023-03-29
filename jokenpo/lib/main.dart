@@ -63,11 +63,15 @@ class _GameAppState extends State<GameApp> {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
+        appBar: AppBar(
+          title: Text('Jogo de Pedra, Papel e Tesoura'),
+          centerTitle: true,
+        ),
         body: Column(
           children: [
+            Text('Selecione uma das opções abaixo', style: estiloTitulo),
             Text(_mensagemMaquina, style: estiloTitulo),
             Text(_mensagemUsuario, style: estiloTitulo),
-            Text('Selecione uma das opções abaixo', style: estiloTitulo),
             Expanded(
               child: GestureDetector(
                 onTap: () => _opcaoSelecionada('pedra'),

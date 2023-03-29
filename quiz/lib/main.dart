@@ -65,7 +65,9 @@ class _GameAppState extends State<GameApp> {
                 child: Align(
                   alignment: Alignment.center,
                   child: Container(
-                    color: Colors.purple,
+                    decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(20),
+                    color: Colors.purple),
                     height: 400,
                     width: 750,
                     margin: const EdgeInsets.fromLTRB(10, 10, 10, 0),
@@ -85,7 +87,9 @@ class _GameAppState extends State<GameApp> {
                 child: Align(
                   alignment: Alignment.center,
                   child: Container(
-                    color: cor1,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(50),
+                      color: cor1),
                     height: 400,
                     width: 550,
                     margin: const EdgeInsets.all(10),
@@ -102,7 +106,9 @@ class _GameAppState extends State<GameApp> {
                 child: Align(
                   alignment: Alignment.center,
                   child: Container(
-                    color: cor2,
+                    decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(50),
+                    color: cor2),
                     height: 400,
                     width: 550,
                     margin: const EdgeInsets.all(10),
@@ -119,7 +125,9 @@ class _GameAppState extends State<GameApp> {
                 child: Align(
                   alignment: Alignment.center,
                   child: Container(
-                    color: cor3,
+                    decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(50),
+                    color: cor3),
                     height: 400,
                     width: 550,
                     margin: const EdgeInsets.all(10),
@@ -136,7 +144,9 @@ class _GameAppState extends State<GameApp> {
                 child: Align(
                   alignment: Alignment.center,
                   child: Container(
-                    color: cor4,
+                    decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(50),
+                    color: cor4),
                     height: 400,
                     width: 550,
                     margin: const EdgeInsets.all(10),
