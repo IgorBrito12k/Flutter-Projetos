@@ -1,9 +1,11 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'task.dart';
 
 class TaskListPage extends StatelessWidget {
 FirebaseFirestore firestore = FirebaseFirestore.instance;
+FirebaseAuth auth = FirebaseAuth.instance;
 
 void update(String id, bool finished){
   firestore.collection('tasks').doc(id).update({
@@ -21,6 +23,14 @@ void delete(String id){
     return Scaffold(
       appBar: AppBar(
         title: Text("Tasks"),
+        actions: [
+          IconButton(
+            onPressed: () {
+              auth.signOut();
+              Navigator.of(context).pushReplacementNamed('/user-login');
+            },
+            icon: const Icon(Icons.logout),)
+        ],
       ),
       body: StreamBuilder<QuerySnapshot<Map<String, dynamic>>>(
         stream: firestore
@@ -44,6 +54,7 @@ void delete(String id){
                     value: task['finished'],
                     title: Text(task['name']),
                     subtitle: Text('Low'),
+                    
                 ),
             ))
               .toList(),

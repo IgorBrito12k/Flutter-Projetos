@@ -6,6 +6,22 @@ class UserLoginPage extends StatelessWidget {
   final TextEditingController txtEmail = TextEditingController();
   final TextEditingController txtSenha = TextEditingController();
 
+  void login(BuildContext context) async {
+      try {
+        await auth.signInWithEmailAndPassword(
+          email: txtEmail.text, password: txtSenha.text);
+        Navigator.of(context).pushReplacementNamed('/task-list');
+      } on Exception catch (error) {
+        showDialog(
+          context: context,
+          builder: (_) {
+            return AlertDialog(
+              title: Text("Erro no login"),
+            );
+          }
+        );
+      }
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -18,35 +34,39 @@ class UserLoginPage extends StatelessWidget {
           children: [
             TextField(
               controller: txtEmail,
-              decoration: InputDecoration(hintText: "E-mail"),
+              decoration: InputDecoration(labelText: "E-mail"),
               keyboardType: TextInputType.emailAddress,
-            ),
-            TextField(
-              controller: txtSenha,
-              decoration: InputDecoration(hintText: "Senha"),
-              obscureText: true,
             ),
             SizedBox(
               height: 10,
             ),
+            TextField(
+              controller: txtSenha,
+              decoration: InputDecoration(labelText: "Senha"),
+              obscureText: true,
+            ),
+            SizedBox(
+              height: 5,
+            ),
             Container(
+              margin: EdgeInsets.only(top: 12),
               width: double.infinity,
               child: ElevatedButton(
                 onPressed: () {
-                  auth.signInWithEmailAndPassword(
-                      email: txtEmail.text, password: txtSenha.text);
+                  login(context);
                 },
-                child: Text("Logar"),
+                child: Text("Entrar"),
               ),
             ),
             SizedBox(
               height: 10,
             ),
             Container(
+              margin: EdgeInsets.only(top: 12),
               width: double.infinity,
               child: ElevatedButton(
-                onPressed: () => Navigator.of(context).pushNamed(
-                    '/user-register'), //para navegar entre as telas o push é pra voltar o pop é para sobrepor
+                onPressed: () => 
+                  Navigator.of(context).pushNamed('/user-register'), //para navegar entre as telas o push é pra voltar o pop é para sobrepor
                 child: Text("Não possui conta? Clique aqui"),
               ),
             ),

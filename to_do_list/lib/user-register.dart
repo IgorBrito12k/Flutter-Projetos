@@ -28,12 +28,12 @@ class UserRegisterPage extends StatelessWidget {
              TextField(
               controller: txtSenha, 
               decoration: InputDecoration(
-                hintText: "Senha"
+                labelText: "Senha"
               ),
               obscureText: true,
             ),
             SizedBox(
-              height: 10,
+              height: 5,
             ),
             Container(
               width: double.infinity,
@@ -41,7 +41,8 @@ class UserRegisterPage extends StatelessWidget {
                 onPressed: () { 
                  auth.createUserWithEmailAndPassword(
                    email: txtEmail.text, password: txtSenha.text);
-                },
+                   Navigator.pop(context);
+                },  
                 child: Text("Adicionar"),
               ),
             ),

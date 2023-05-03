@@ -1,8 +1,10 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 class TaskCreatePage extends StatelessWidget {
   FirebaseFirestore firestore = FirebaseFirestore.instance;
+  FirebaseAuth auth = FirebaseAuth.instance;
   final TextEditingController txtName = TextEditingController();
   final TextEditingController txtPriority = TextEditingController();
   
@@ -33,7 +35,8 @@ class TaskCreatePage extends StatelessWidget {
                   firestore.collection("tasks").add({
                     'name': txtName.text,
                     'finished': false,
-                    'priority': txtPriority.text
+                    'priority': txtPriority.text,
+                    'uid': auth.currentUser!.uid
                   });
                   Navigator.of(context).pop(); },
                 child: Text("Adicionar"),
