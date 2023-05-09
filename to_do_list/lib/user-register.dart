@@ -12,6 +12,7 @@ class UserRegisterPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text("New User"),
+        centerTitle: true,
       ),
       body: Container(
         margin: EdgeInsets.all(10),

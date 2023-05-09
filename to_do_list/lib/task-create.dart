@@ -13,6 +13,7 @@ class TaskCreatePage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text("New Task"),
+        centerTitle: true,
       ),
       body: Container(
         margin: EdgeInsets.all(10),

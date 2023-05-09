@@ -23,6 +23,7 @@ void delete(String id){
     return Scaffold(
       appBar: AppBar(
         title: Text("Tasks"),
+        centerTitle: true,
         actions: [
           IconButton(
             onPressed: () {
@@ -43,11 +44,12 @@ void delete(String id){
 
           var tasks = snapshot.data!.docs;
 
-          return ListView(
+                    return ListView(
             children: tasks
             .map((task) =>  Dismissible(
               key: Key(task.id),
-              background: Container(color: Colors.red,),
+              background: Container(color: Colors.red,
+              child: Text("Delete"),),
               onDismissed: (_) => delete(task.id),
               child: CheckboxListTile(
                    onChanged: (value) => update(task.id, value!),
@@ -62,9 +64,33 @@ void delete(String id){
         }
       ),
         
-    
+        // OU
+        //   return ListView(
+        //     children: tasks
+        //     .map((task) =>  Dismissible(
+        //       key: Key(task.id),
+        //       background: Container(color: Colors.red,),
+        //       onDismissed: (_) => delete(task.id),
+        //       child: ListTile(
+        //           leading: Checkbox(
+        //             onChanged: (value) => update(task.id, value!),
+        //             value: task['finished'],
+        //             ),
+        //             title: Text(task['name']),
+        //             subtitle: Text('Low'),
+        //             trailing: IconButton(
+        //               icon: Icon(Icons.delete),
+        //               onPressed: () => delete(task.id)
+        //               ),
+        //         ),
+        //     ))
+        //       .toList(),
+        //       );
+        // }
+
       floatingActionButton: FloatingActionButton(
-        onPressed: () => Navigator.of(context).pushNamed('/task-create'), //para navegar entre as telas o push é pra voltar o pop é para sobrepor
+        //para navegar entre as telas o push é pra voltar o pop é para sobrepor
+        onPressed: () => Navigator.of(context).pushNamed('/task-create'), 
         child: Icon(Icons.add),
       ),
     );

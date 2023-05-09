@@ -16,7 +16,7 @@ class UserLoginPage extends StatelessWidget {
           context: context,
           builder: (_) {
             return AlertDialog(
-              title: Text("Erro no login"),
+              title: Text("Erro no login irmão"),
             );
           }
         );
@@ -27,6 +27,7 @@ class UserLoginPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text("Login"),
+        centerTitle: true,
       ),
       body: Container(
         margin: EdgeInsets.all(10),
