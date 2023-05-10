@@ -13,7 +13,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        primarySwatch: Colors.purple,
       ),
       home: const MyHomePage(),
     );
@@ -34,71 +34,63 @@ class _MyHomePageState extends State<MyHomePage> {
         appBar: AppBar(
           title: Text("Q&A"),
         ),
-        body: Column(
+        body: ListView(
           children: [
             Padding(
               padding: const EdgeInsets.all(40),
-              child: TextField(
-                maxLines: 5,
-                decoration: InputDecoration(
-                  border: OutlineInputBorder(),
-                  hintText: 'Faça sua pergunta', 
+              child: Card(
+                child: Column(
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.fromLTRB(30, 15, 30, 10),
+                      child: TextField(
+                        maxLines: 5,
+                        decoration: InputDecoration(
+                          border: InputBorder.none,
+                          hintText: 'Faça sua pergunta',
+                        ),
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.fromLTRB(30, 0, 30, 15),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text("Enviar como anônimo"),
+                          ElevatedButton(
+                            onPressed: () => {},
+                            child: Text('Enviar'),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
                 ),
               ),
             ),
-            Container(
-              height: 50,
-              width: double.infinity,
-              margin: const EdgeInsets.fromLTRB(40, 0, 40, 0),
-              child: ElevatedButton(
-                onPressed: () => {},
-                child: Text('Enviar'),
-              ),
-            ),
-            Flexible(
-              child: Container(
-                height: 50,
-                width: double.infinity,
-                color: Colors.blue,
-                margin: const EdgeInsets.fromLTRB(40, 40, 40, 0),
-                child: ListTile(
-                  title: Text("Pergunta 1"),
+            Card(
+              color: Colors.purple,
+              margin: const EdgeInsets.fromLTRB(40, 40, 40, 0),
+              child: ListTile(
+                leading: CircleAvatar(),
+                title: Text("Palmirinha"),
+                subtitle:
+                    Text("Qual sua opinião sobre o Vale a pena ver de novo?"),
+                trailing: Container(
+                  width: 60,
+                  child: Row(
+                    children: [
+                      IconButton(
+                        icon: const Icon(Icons.thumb_up_alt_sharp),
+                        tooltip: 'Deixe seu like',
+                        onPressed: () => {},
+                      ),
+                      Text("52")
+                    ],
+                  ),
                 ),
               ),
             ),
-            Flexible(
-              child: Container(
-                height: 50,
-                width: double.infinity,
-                color: Colors.blue,
-                margin: const EdgeInsets.fromLTRB(40, 40, 40, 0),
-                child: ListTile(
-                  title: Text("Pergunta 2"),
-                ),
-              ),
-            ),
-            Flexible(
-              child: Container(
-                height: 50,
-                width: double.infinity,
-                color: Colors.blue,
-                margin: const EdgeInsets.fromLTRB(40, 40, 40, 0),
-                child: ListTile(
-                  title: Text("Pergunta 3"),
-                ),
-              ),
-            ),
-            Flexible(
-              child: Container(
-                height: 50,
-                width: double.infinity,
-                color: Colors.blue,
-                margin: const EdgeInsets.fromLTRB(40, 40, 40, 0),
-                child: ListTile(
-                  title: Text("Pergunta 4"),
-                ),
-              ),
-            )
           ],
         ));
   }
