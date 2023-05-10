@@ -76,6 +76,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 title: Text("Palmirinha"),
                 subtitle:
                     Text("Qual sua opinião sobre o Vale a pena ver de novo?"),
+                    textColor: Colors.white,
                 trailing: Container(
                   width: 60,
                   child: Row(
