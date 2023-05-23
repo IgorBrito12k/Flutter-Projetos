@@ -3,7 +3,8 @@ import 'package:flutter/material.dart';
 
 class PerguntaCreatePage extends StatelessWidget {
   FirebaseFirestore firestore = FirebaseFirestore.instance;
-  //final TextEditingController txtName = TextEditingController();
+
+  final TextEditingController txtPergunta = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -14,6 +15,7 @@ class PerguntaCreatePage extends StatelessWidget {
           child: Container(
             //revisar este widget, Textfiield nao estava wraped con container antes
             child: TextField(
+              controller: txtPergunta,
               maxLines: 5,
               decoration: InputDecoration(
                 border: InputBorder.none,
@@ -29,7 +31,13 @@ class PerguntaCreatePage extends StatelessWidget {
             children: [
               Text("Enviar como anônimo"),
               ElevatedButton(
-                onPressed: () => {},
+                onPressed: () => {
+                  firestore.collection('Perguntas').add({
+                    'pergunta': txtPergunta.text,
+                    'nome': 'Anonimo',
+                    'likes': 0,
+                  })
+                },
                 child: Text('Enviar'),
               ),
             ],
