@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:trabalhoqa/pergunta_create.dart';
 import 'package:trabalhoqa/pergunta_list.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 const firebaseConfig = FirebaseOptions(
     apiKey: "AIzaSyAxpSn8Jahekr2SMkCbL3gVxhYu5plffAY",
@@ -21,10 +22,17 @@ void main() async {
 
 class MyApp extends StatelessWidget {
   MyApp({super.key});
+  final FirebaseAuth auth = FirebaseAuth.instance;
 
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
+    // Verifica se há algum usuário logado:
+    if (auth.currentUser == null) {
+      // caso não haja, autentica com usuário anônimo
+      // isso gerará um usuário sem dados, mas com uid.
+      auth.signInAnonymously();
+    }
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
@@ -49,8 +57,13 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: Text("Q&A"),
-        ),
+            title: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Text('Q&A'),
+            Text('CODE: CÓDIGO'),
+          ],
+        )),
         body: Column(
           //revisar este widget << foi aqui qe muudeii Era ListView antes
           children: [

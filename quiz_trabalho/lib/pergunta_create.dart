@@ -1,10 +1,12 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 class PerguntaCreatePage extends StatelessWidget {
   FirebaseFirestore firestore = FirebaseFirestore.instance;
 
   final TextEditingController txtPergunta = TextEditingController();
+  final FirebaseAuth auth = FirebaseAuth.instance;
 
   @override
   Widget build(BuildContext context) {
@@ -34,8 +36,12 @@ class PerguntaCreatePage extends StatelessWidget {
                 onPressed: () => {
                   firestore.collection('Perguntas').add({
                     'pergunta': txtPergunta.text,
-                    'nome': 'Anonimo',
-                    'likes': 0,
+                    'uid': auth.currentUser!.uid,
+                    'userName': auth.currentUser!.displayName == null
+                        ? 'Anonimo'
+                        : auth.currentUser!.displayName,
+                    'likes': [],
+                    'data': DateTime.now(),
                   })
                 },
                 child: Text('Enviar'),

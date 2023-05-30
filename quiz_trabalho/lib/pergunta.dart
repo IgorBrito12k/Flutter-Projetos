@@ -1,8 +1,10 @@
 class Perguntas {
   String? id;
-  String? nome;
+  String? uid;
   String? pergunta;
-  int? likes;
+  String? userName;
+  List? likes;
+  DateTime? data;
 
-  Perguntas(this.id, this.nome, this.pergunta, this.likes);
+  Perguntas(this.id, this.uid, this.pergunta, this.likes, this.data);
 }
